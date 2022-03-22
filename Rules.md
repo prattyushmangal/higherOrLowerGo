@@ -15,3 +15,9 @@ A simple higher or lower game.
 
 Extension:
 - Game is only played with One Deck. 
+
+## Rules of the development Game:
+
+- Abide by Good GitHub Practices
+ - So Opening PRs into Main after Developing in your own branch. 
+- Abide by TDD Practices. See [here](https://en.wikipedia.org/wiki/Test-driven_development) for information.
