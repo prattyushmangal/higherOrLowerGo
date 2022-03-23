@@ -13,3 +13,13 @@ func TestGetInput(t *testing.T) {
 	funcOutput := src.GetInput()
 	assert.Contains(t, options, funcOutput)
 }
+
+// Test Running Game
+// - Test Outputting Card
+// - Test Taking Input
+// - Test assertion based on input
+// - Test Ending Game on Failed Input
+// Test Point Keeping
+// Point Showing
+// Test Restarting game
+// https://github.com/faiface/pixel & https://www.codementor.io/@ajinkyax/game-development-in-golang-15yxglh1kxwsl
