@@ -1,18 +1,39 @@
 package src_test
 
 import (
-	src "anush22/cardgame/src"
+	game "anush22/cardgame/src"
 	"testing"
-
+	logic "anush22/cardgame/utils"
 	"github.com/stretchr/testify/assert"
 )
 
-var options = [4]string{"A", "B", "a", "b"}
+var options = [2]string{"A", "B"}
 
-func TestGetInput(t *testing.T) {
-	funcOutput := src.GetInput()
-	assert.Contains(t, options, funcOutput)
+// func TestGetInput(t *testing.T) {
+// 	funcOutput := src.GetInput()
+// 	assert.Contains(t, options, funcOutput)
+// }
+
+func TestUpdateScore(t *testing.T) {
+	userAnswer:="A"
+	prevScore:= game.GetScore()
+	prevCard:="4"
+	currentCard:="6"
+	game.UpdateScore(prevCard,  currentCard, userAnswer)
+	funcOutput:= game.GetScore()
+	assert.GreaterOrEqual(t, funcOutput, 0)
+	assert.LessOrEqual(t, funcOutput, 12)
+	assert.GreaterOrEqual(t, prevScore, 0)
+	assert.LessOrEqual(t,  prevScore, 12)
+	if (userAnswer=="A" && logic.IsAbove(prevCard, currentCard)){
+		assert.Greater(t,  funcOutput, prevScore)
+	} else if (userAnswer=="B" && !logic.IsAbove(prevCard, currentCard)){
+		assert.Greater(t,  funcOutput, prevScore)
+	} else{
+		assert.Equal(t, prevScore, funcOutput)
+	}
 }
+
 
 // Test Running Game
 // - Test Outputting Card

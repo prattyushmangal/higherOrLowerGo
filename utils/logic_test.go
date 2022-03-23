@@ -8,6 +8,22 @@ import (
 )
 
 var cards = [13]string{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
+var isBefore = map[string] bool{ 
+	"2":false,
+	"3":false,
+	"4":false,
+	"5":false,
+	"6":false,
+	"7":false,
+	"8":false,
+	"9":false,
+	"10":false,
+	"J":false,
+	"Q":false,
+	"K":false,
+	"A":false,
+}
+
 
 func TestSomething(t *testing.T) {
 	funcOutput := logic.Something(9)
@@ -15,8 +31,13 @@ func TestSomething(t *testing.T) {
 }
 
 func TestRandomiser(t *testing.T) {
+	
+	for i := 1; i <= 10; i++{
 	funcOutput := logic.Randomiser()
-	assert.Contains(t, cards, funcOutput)
+	assert.Contains(t, cards, funcOutput) 
+	assert.False(t, isBefore[funcOutput])
+	isBefore[funcOutput]= true
+	}
 }
 
 func TestIsAboveSimple(t *testing.T) {

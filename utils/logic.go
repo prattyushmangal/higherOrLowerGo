@@ -7,7 +7,22 @@ import (
 )
 
 var cards = [13]string{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
-
+var isBefore = map[string] bool{ 
+	"2":false,
+	"3":false,
+	"4":false,
+	"5":false,
+	"6":false,
+	"7":false,
+	"8":false,
+	"9":false,
+	"10":false,
+	"J":false,
+	"Q":false,
+	"K":false,
+	"A":false,
+}
+var countCards int = 0
 func getValue(card string) int {
 
 	if card == "J" {
@@ -32,9 +47,17 @@ func Something(num int) int {
 }
 
 func Randomiser() string {
+	if countCards == len(cards){
+		return "Cards Exhausted"
+	}
 	rand.Seed(time.Now().Unix())
-
-	return cards[rand.Intn(len(cards))]
+	var my_card string = cards[rand.Intn(len(cards))]
+	for isBefore[my_card] {
+		my_card = cards[rand.Intn(len(cards))]
+	}
+	isBefore[my_card] = true
+	countCards++
+	return my_card
 }
 
 func IsAbove(prevCard string, currentCard string) bool {
