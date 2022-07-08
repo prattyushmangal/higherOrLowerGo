@@ -8,7 +8,7 @@ import (
 	"os"
 	// "math/rand"
 	// "math"
-	// "time"
+	"time"
 	_ "image/png"
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
@@ -98,7 +98,14 @@ func Run(){
 				fmt.Println("Sorry, Wrong Guess. Game ends. Your score is " ,game_score)
 				fmt.Println(prevCard)
 				fmt.Println(currentCard)
+
+				prevSprite.Draw(win, prevmat)
+				currSprite.Draw(win, currmat)				
+
 				gameOverSprite.Draw(win, pixel.IM.Moved(win.Bounds().Center()))
+				win.Update()
+				time.Sleep(2 * time.Second)
+
 				break;
 			}
 			game_score++
@@ -121,7 +128,14 @@ func Run(){
 				fmt.Println("Sorry, Wrong Guess. Game ends. Your score is " ,game_score)
 				fmt.Println(prevCard)
 				fmt.Println(currentCard)
+
+				prevSprite.Draw(win, prevmat)
+				currSprite.Draw(win, currmat)				
+
 				gameOverSprite.Draw(win, pixel.IM.Moved(win.Bounds().Center()))
+				win.Update()
+				time.Sleep(2 * time.Second)
+				
 				break;
 			}
 			game_score++
